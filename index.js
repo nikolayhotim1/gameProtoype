@@ -1,27 +1,31 @@
 'use strict';
-function Game() {
-    this.level = 0;
+class Game {
+    constructor() {
+        this.level = 0;
+    }
+
+    play() {
+        // Actions of player
+        this.level++;
+        console.log('Welcome to level ' + this.level);
+        this.unlock();
+    }
+
+    unlock() {
+        if (this.level === 42) {
+            Robot.prototype.deployLaser = function () {
+                console.log(this.name + ' is blasting you with laser beams.');
+            };
+        }
+    }
 }
 
-Game.prototype.play = function () {
-    // Actions of player
-    this.level++;
-    console.log('Welcome to level ' + this.level);
-    this.unlock();
-};
-
-Game.prototype.unlock = function () {
-    if (this.level === 42) {
-        Robot.prototype.deployLaser = function () {
-            console.log(this.name + ' is blasting you with laser beams.');
-        };
+class Robot {
+    constructor(name, year, owner) {
+        this.name = name;
+        this.year = year;
+        this.owner = owner;
     }
-};
-
-function Robot(name, year, owner) {
-    this.name = name;
-    this.year = year;
-    this.owner = owner;
 }
 
 let game = new Game();
